@@ -14,7 +14,7 @@ int Xpin=A0;
 int Ypin=A1;
 int Xval;
 int Yval;
-int bal = 800;
+int bal = 750;
 int betlvl= 10;
 int betupPin=6; 
 int ledPinred=5;
@@ -26,8 +26,6 @@ Adafruit_SSD1306 display(OLED_RESET);
 const unsigned char PROGMEM bar [] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0xC3, 0xF7, 0x83, 0xC1, 0xE3, 0x81, 0xDD, 0xCB, 0x9D, 0xC1, 0xC1, 0x81, 0xDC, 0x89, 0x83, 0xC0, 0x9C, 0x99, 0xC3, 0x3C, 0x99, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0xFF, 0xFF, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 
 const unsigned char PROGMEM grape [] = {0x00, 0x00, 0x00, 0x00, 0x00, 0xC0, 0x00, 0x00, 0xC0, 0x00, 0x00, 0xC0, 0x00, 0x01, 0xC0, 0x00, 0x01, 0x80, 0x01, 0x61, 0x80, 0x02, 0x13, 0x00, 0x04, 0x0F, 0x00, 0x04, 0x1E, 0xF0, 0x04, 0x3F, 0xA8, 0x0E, 0xE1, 0xD4, 0x1B, 0xC0, 0xAA, 0x10, 0xC2, 0x90, 0x10, 0x42, 0x8E, 0x10, 0x4D, 0x80, 0x19, 0xB7, 0x00, 0x0E, 0x7E, 0x00, 0x07, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
-
-const unsigned char PROGMEM orange [] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xFF, 0x00, 0x03, 0x00, 0xC0, 0x0C, 0x00, 0x20, 0x18, 0x00, 0x30, 0x11, 0x00, 0x18, 0x31, 0xC0, 0x08, 0x27, 0x80, 0x28, 0x27, 0x00, 0x2C, 0x60, 0x00, 0x14, 0x60, 0x00, 0x34, 0x60, 0x00, 0x34, 0x60, 0x00, 0x6C, 0x20, 0x00, 0xEC, 0x30, 0x01, 0xD8, 0x10, 0x07, 0xD8, 0x18, 0x9F, 0xB0, 0x0E, 0x7D, 0xE0, 0x03, 0xD7, 0xC0, 0x00, 0xFF, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 
 const unsigned char PROGMEM seven [] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x20, 0x1F, 0xFC, 0x70, 0x1F, 0x8F, 0xD0, 0x1A, 0x00, 0x18, 0x18, 0x00, 0x30, 0x19, 0xE0, 0x20, 0x1B, 0xFF, 0x60, 0x1B, 0x3C, 0x40, 0x1F, 0x38, 0xC0, 0x0E, 0x61, 0x80, 0x00, 0x41, 0x80, 0x00, 0xC1, 0x80, 0x00, 0x81, 0x80, 0x01, 0x83, 0x80, 0x01, 0x83, 0x80, 0x01, 0xFF, 0x80, 0x01, 0xFF, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 
@@ -41,10 +39,14 @@ const unsigned char PROGMEM bana [] = {0x00, 0x00, 0x00, 0x00, 0x01, 0xC0, 0x00,
 
 const unsigned char PROGMEM gameover [] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1F, 0xF8, 0x3C, 0x0F, 0x83, 0xEF, 0xFE, 0x01, 0xFE, 0x1C, 0x0F, 0x7F, 0xF7, 0xFE, 0x00, 0x00, 0x3F, 0xF0, 0x7E, 0x0F, 0x87, 0xCF, 0xFC, 0x07, 0xFF, 0x1E, 0x1E, 0x7F, 0xE7, 0xFF, 0x00, 0x00, 0x7F, 0xE0, 0xFE, 0x1F, 0x8F, 0xDE, 0x00, 0x0F, 0xDF, 0x1E, 0x1C, 0xF0, 0x0F, 0x0F, 0x00, 0x00, 0x78, 0x01, 0xEE, 0x1F, 0x9F, 0xDE, 0x00, 0x0F, 0x07, 0x0E, 0x3C, 0xF0, 0x0F, 0x0F, 0x00, 0x00, 0xF1, 0xF1, 0xCE, 0x1F, 0xFF, 0x9D, 0xF0, 0x1E, 0x07, 0x0E, 0x78, 0xEF, 0x8E, 0xFE, 0x00, 0x00, 0xF3, 0xE3, 0xCE, 0x3F, 0xFF, 0xBF, 0xC0, 0x1E, 0x0F, 0x0E, 0xF1, 0xFE, 0x1F, 0xFC, 0x00, 0x00, 0x75, 0xE7, 0x8E, 0x39, 0xF7, 0xB8, 0x00, 0x1E, 0x1E, 0x0F, 0xE1, 0xC0, 0x1D, 0xE0, 0x00, 0x00, 0x7F, 0xCF, 0xFF, 0x79, 0xE7, 0x7F, 0xF0, 0x1F, 0xFE, 0x0F, 0xE3, 0xFF, 0xBC, 0xF0, 0x00, 0x00, 0x3F, 0xDF, 0xFF, 0x79, 0xCF, 0x7F, 0xF0, 0x0F, 0xFC, 0x0F, 0xC3, 0xFF, 0xBC, 0x78, 0x00, 0x00, 0x1F, 0xFF, 0xE7, 0x71, 0x8F, 0x7F, 0xE0, 0x07, 0xF0, 0x07, 0x83, 0xFF, 0x38, 0x3E, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
 
+const unsigned char PROGMEM jackpot [] = {0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x1F, 0x03, 0xE0, 0x03, 0xFF, 0xBE, 0x0F, 0xDF, 0xFE, 0x01, 0xFC, 0x03, 0xFF, 0xC0, 0x00, 0x00, 0x1E, 0x07, 0xF0, 0x0F, 0xFF, 0x3C, 0x1F, 0x1F, 0xFF, 0x07, 0xFF, 0x07, 0xFF, 0x80, 0x00, 0x00, 0x3E, 0x07, 0xF0, 0x1F, 0xFE, 0x7C, 0x3E, 0x3F, 0xFF, 0x9F, 0xFF, 0x8F, 0xFF, 0x00, 0x00, 0x00, 0x3E, 0x0F, 0xF0, 0x3F, 0x80, 0x7C, 0xFC, 0x3F, 0xFF, 0xBF, 0xFF, 0x9F, 0xFE, 0x00, 0x00, 0x00, 0x3C, 0x1F, 0xF0, 0x3E, 0x00, 0x79, 0xF0, 0x3E, 0x07, 0xBE, 0x0F, 0x81, 0xF0, 0x00, 0x00, 0x00, 0x7C, 0x3E, 0xF8, 0x7C, 0x00, 0xFB, 0xE0, 0x7C, 0x07, 0x7C, 0x07, 0x81, 0xE0, 0x00, 0x00, 0x00, 0x78, 0x7C, 0xF8, 0x7C, 0x00, 0xFF, 0xC0, 0x7C, 0x1F, 0x78, 0x07, 0x83, 0xE0, 0x00, 0x00, 0x00, 0xF8, 0x7C, 0x78, 0x7C, 0x00, 0xF7, 0xC0, 0x7F, 0xFE, 0x78, 0x0F, 0x83, 0xE0, 0x00, 0x00, 0x01, 0xF8, 0xF8, 0x78, 0x7C, 0x01, 0xF7, 0xE0, 0xFF, 0xF8, 0x7C, 0x1F, 0x03, 0xC0, 0x00, 0x00, 0x7F, 0xF1, 0xF0, 0x78, 0x7E, 0x01, 0xF3, 0xF0, 0xFF, 0xC0, 0x7E, 0x3F, 0x07, 0xC0, 0x00, 0x00, 0xFF, 0xF3, 0xFF, 0xF8, 0x3F, 0xF1, 0xE1, 0xF0, 0xF0, 0x00, 0x7F, 0xFE, 0x07, 0xC0, 0x00, 0x00, 0xFF, 0xE3, 0xFF, 0x78, 0x1F, 0xF3, 0xE0, 0xF9, 0xF0, 0x00, 0x3F, 0xFC, 0x07, 0x80, 0x00, 0x01, 0xFF, 0x8F, 0xFE, 0x7C, 0x07, 0xF3, 0xC0, 0x7D, 0xF0, 0x00, 0x1F, 0xF0, 0x0F, 0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
+
+const unsigned char PROGMEM cherry [] = {0x00, 0x00, 0x00, 0x00, 0x40, 0x00, 0x00, 0x60, 0x00, 0x00, 0x60, 0x00, 0x00, 0x70, 0x00, 0x00, 0x38, 0x00, 0x00, 0x68, 0x00, 0x07, 0xFE, 0x00, 0x0C, 0xE7, 0xE0, 0x18, 0x37, 0xB0, 0x30, 0x1C, 0x18, 0x20, 0x18, 0x08, 0x20, 0x48, 0x28, 0x20, 0x58, 0x28, 0x20, 0x50, 0x68, 0x31, 0x99, 0xD8, 0x1B, 0x7C, 0x30, 0x0F, 0xC7, 0xE0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
+
+const unsigned char PROGMEM money [] = {0x00, 0x14, 0x00, 0x00, 0x14, 0x00, 0x00, 0x14, 0x00, 0x00, 0x1C, 0x00, 0x00, 0x7E, 0x00, 0x01, 0xDF, 0x00, 0x03, 0xDF, 0xC0, 0x03, 0xD7, 0x80, 0x03, 0xF4, 0x00, 0x03, 0xFC, 0x00, 0x03, 0xFE, 0x00, 0x01, 0xFF, 0x80, 0x00, 0x7F, 0xC0, 0x00, 0x3F, 0xE0, 0x00, 0x1F, 0xE0, 0x00, 0x17, 0xE0, 0x01, 0xD5, 0xE0, 0x03, 0xF5, 0xE0, 0x0F, 0xFD, 0xC0, 0x01, 0xFF, 0x80, 0x00, 0x7E, 0x00, 0x00, 0x3C, 0x00, 0x00, 0x14, 0x00, 0x00, 0x14, 0x00};
 
 void setup() {
   display.begin(SSD1306_SWITCHCAPVCC, 0x3C);
-  delay(1200);
   display.display();
   display.clearDisplay();
   display.setFont(&FreeSans9pt7b);
@@ -58,6 +60,7 @@ void setup() {
   pinMode(ledPingreen,OUTPUT);
   pinMode(ledPinblue,OUTPUT);
   randomSeed(analogRead(10));
+  delay(1200);
   display.clearDisplay();
   display.drawBitmap(0, 0,goodluck,128,32, 1);
   display.display();
@@ -127,18 +130,17 @@ void loop() {
   delay(100);
   Serial.print("X =");
   Serial.print(Xval);
-  if (Xval<200){
+  if (Xval<200 && bal >= betlvl){
     int tt = 100;
     int yy = 10;
+    int yyy = 11;
     int Axval = 34;
     int Bxval = 67;
     int Cxval = 101;
-    int numberA= random(1,10);
-    int numberB= random(1,10);
-    int numberC= random(1,10);
+    int numberA= random(1,21);
+    int numberB= random(1,21);
+    int numberC= random(1,21);
     (bal=bal-betlvl);
-    digitalWrite(ledPingreen,HIGH);
-    delay(250);
     display.clearDisplay();
     display.setCursor(0, 29);
     display.println(betlvl);
@@ -150,13 +152,13 @@ void loop() {
     Serial.println(numberA);
     delay(50);
     if (numberA==1){
-      display.drawBitmap(Axval, yy,orange,24,24, 1);
+      display.drawBitmap(Axval, yy,cherry,24,24, 1);
       display.display();
       (Ascore=Ascore+4);
       delay(tt);      
     }
     if (numberA==2){  
-      display.drawBitmap(Axval, yy,orange,24,24, 1);
+      display.drawBitmap(Axval, yy,cherry,24,24, 1);
       display.display();
       (Ascore=Ascore+4);
       delay(tt);  
@@ -180,13 +182,13 @@ void loop() {
       delay(tt);     
     }
     if (numberA==6){
-      display.drawBitmap(Axval, yy,bar,24,24, 1);
+      display.drawBitmap(Axval, yyy,bar,24,24, 1);
       display.display();
       (Ascore=Ascore+6);
       delay(tt);     
     }  
     if (numberA==7){
-      display.drawBitmap(Axval, yy,bar,24,24, 1);
+      display.drawBitmap(Axval, yyy,bar,24,24, 1);
       display.display();
       (Ascore=Ascore+6);
       delay(tt);     
@@ -203,7 +205,72 @@ void loop() {
       (Ascore=Ascore+9);
       delay(tt);     
     }
-    digitalWrite(ledPingreen,LOW);
+    if (numberA==10){
+      display.drawBitmap(Axval, yy,cherry,24,24, 1);
+      display.display();
+      (Ascore=Ascore+4);
+      delay(tt);      
+    }
+    if (numberA==11){  
+      display.drawBitmap(Axval, yy,cherry,24,24, 1);
+      display.display();
+      (Ascore=Ascore+4);
+      delay(tt);  
+    }
+    if (numberA==12){
+      display.drawBitmap(Axval, yy,bana,24,24, 1);
+      display.display();
+      (Ascore=Ascore+7);
+      delay(tt);     
+    }
+    if (numberA==13){
+      display.drawBitmap(Axval, yy,bana,24,24, 1);
+      display.display();
+      (Ascore=Ascore+7);
+      delay(tt);     
+    }  
+    if (numberA==14){
+      display.drawBitmap(Axval, yy,seven,24,24, 1);
+      display.display();
+      (Ascore=Ascore+5);
+      delay(tt);     
+    }
+    if (numberA==15){
+      display.drawBitmap(Axval, yy,cherry,24,24, 1);
+      display.display();
+      (Ascore=Ascore+4);
+      delay(tt);     
+    }  
+    if (numberA==16){
+      display.drawBitmap(Axval, yyy,bar,24,24, 1);
+      display.display();
+      (Ascore=Ascore+6);
+      delay(tt);     
+    }
+    if (numberA==17){
+      display.drawBitmap(Axval, yy,grape,24,24, 1);
+      display.display();
+      (Ascore=Ascore+9);
+      delay(tt);     
+    }  
+    if (numberA==18){
+      display.drawBitmap(Axval, yy,grape,24,24, 1);
+      display.display();
+      (Ascore=Ascore+9);
+      delay(tt); 
+    }  
+    if (numberA==19){
+      display.drawBitmap(Axval, yy,grape,24,24, 1);
+      display.display();
+      (Ascore=Ascore+9);
+      delay(tt);     
+    }  
+    if (numberA==20){
+      display.drawBitmap(Axval, 9,money,24,24, 1);
+      display.display();
+      (Ascore=Ascore+12);
+      delay(tt); 
+    }  
     Serial.println(Ascore);    
     delay(50);
     Serial.println(numberA);       
@@ -211,13 +278,13 @@ void loop() {
     Serial.println(numberB);
     delay(100);  
     if (numberB==1){
-      display.drawBitmap(Bxval, yy,orange,24,24, 1);
+      display.drawBitmap(Bxval, yy,cherry,24,24, 1);
       display.display();
       (Bscore=Bscore+4);
       delay(tt);      
     }
     if (numberB==2){  
-      display.drawBitmap(Bxval, yy,orange,24,24, 1);
+      display.drawBitmap(Bxval, yy,cherry,24,24, 1);
       display.display();
       (Bscore=Bscore+4);
       delay(tt);  
@@ -233,7 +300,7 @@ void loop() {
       display.display();
       (Bscore=Bscore+7);
       delay(tt);     
-    }   
+    }  
     if (numberB==5){
       display.drawBitmap(Bxval, yy,seven,24,24, 1);
       display.display();
@@ -241,13 +308,13 @@ void loop() {
       delay(tt);     
     }
     if (numberB==6){
-      display.drawBitmap(Bxval, yy,bar,24,24, 1);
+      display.drawBitmap(Bxval, yyy,bar,24,24, 1);
       display.display();
       (Bscore=Bscore+6);
       delay(tt);     
     }  
     if (numberB==7){
-      display.drawBitmap(Bxval, yy,bar,24,24, 1);
+      display.drawBitmap(Bxval, yyy,bar,24,24, 1);
       display.display();
       (Bscore=Bscore+6);
       delay(tt);     
@@ -263,21 +330,87 @@ void loop() {
       display.display();
       (Bscore=Bscore+9);
       delay(tt);     
-    } 
+    }
+    if (numberB==10){
+      display.drawBitmap(Bxval, yy,cherry,24,24, 1);
+      display.display();
+      (Bscore=Bscore+4);
+      delay(tt);      
+    }
+    if (numberB==11){  
+      display.drawBitmap(Bxval, yy,cherry,24,24, 1);
+      display.display();
+      (Bscore=Bscore+4);
+      delay(tt);  
+    }
+    if (numberB==12){
+      display.drawBitmap(Bxval, yy,bana,24,24, 1);
+      display.display();
+      (Bscore=Bscore+7);
+      delay(tt);     
+    }
+    if (numberB==13){
+      display.drawBitmap(Bxval, yy,bana,24,24, 1);
+      display.display();
+      (Bscore=Bscore+7);
+      delay(tt);     
+    }  
+    if (numberB==14){
+      display.drawBitmap(Bxval, yy,seven,24,24, 1);
+      display.display();
+      (Bscore=Bscore+5);
+      delay(tt);     
+    }
+    if (numberB==15){
+      display.drawBitmap(Bxval, yy,cherry,24,24, 1);
+      display.display();
+      (Bscore=Bscore+4);
+      delay(tt);     
+    }  
+    if (numberB==16){
+      display.drawBitmap(Bxval, yyy,bar,24,24, 1);
+      display.display();
+      (Bscore=Bscore+6);
+      delay(tt);     
+    }
+    if (numberB==17){
+      display.drawBitmap(Bxval, yy,grape,24,24, 1);
+      display.display();
+      (Bscore=Bscore+9);
+      delay(tt);     
+    }  
+    if (numberB==18){
+      display.drawBitmap(Bxval, yy,grape,24,24, 1);
+      display.display();
+      (Bscore=Bscore+9);
+      delay(tt); 
+    }  
+    if (numberB==19){
+      display.drawBitmap(Bxval, yy,grape,24,24, 1);
+      display.display();
+      (Bscore=Bscore+9);
+      delay(tt);     
+    }  
+    if (numberB==20){
+      display.drawBitmap(Bxval, 9,money,24,24, 1);
+      display.display();
+      (Bscore=Bscore+12);
+      delay(tt); 
+    }  
     Serial.println(Bscore);    
     delay(50);
     Serial.println(numberB);       
     delay(50);
     Serial.println(numberC);
     delay(100);
-    if (numberC==1){
-      display.drawBitmap(Cxval, yy,orange,24,24, 1);
+        if (numberC==1){
+      display.drawBitmap(Cxval, yy,cherry,24,24, 1);
       display.display();
       (Cscore=Cscore+4);
       delay(tt);      
     }
     if (numberC==2){  
-      display.drawBitmap(Cxval, yy,orange,24,24, 1);
+      display.drawBitmap(Cxval, yy,cherry,24,24, 1);
       display.display();
       (Cscore=Cscore+4);
       delay(tt);  
@@ -293,7 +426,7 @@ void loop() {
       display.display();
       (Cscore=Cscore+7);
       delay(tt);     
-    }
+    }  
     if (numberC==5){
       display.drawBitmap(Cxval, yy,seven,24,24, 1);
       display.display();
@@ -301,13 +434,13 @@ void loop() {
       delay(tt);     
     }
     if (numberC==6){
-      display.drawBitmap(Cxval, yy,bar,24,24, 1);
+      display.drawBitmap(Cxval, yyy,bar,24,24, 1);
       display.display();
       (Cscore=Cscore+6);
       delay(tt);     
     }  
     if (numberC==7){
-      display.drawBitmap(Cxval, yy,bar,24,24, 1);
+      display.drawBitmap(Cxval, yyy,bar,24,24, 1);
       display.display();
       (Cscore=Cscore+6);
       delay(tt);     
@@ -324,32 +457,215 @@ void loop() {
       (Cscore=Cscore+9);
       delay(tt);     
     }
+    if (numberC==10){
+      display.drawBitmap(Cxval, yy,cherry,24,24, 1);
+      display.display();
+      (Cscore=Cscore+4);
+      delay(tt);      
+    }
+    if (numberC==11){  
+      display.drawBitmap(Cxval, yy,cherry,24,24, 1);
+      display.display();
+      (Cscore=Cscore+4);
+      delay(tt);  
+    }
+    if (numberC==12){
+      display.drawBitmap(Cxval, yy,bana,24,24, 1);
+      display.display();
+      (Cscore=Cscore+7);
+      delay(tt);     
+    }
+    if (numberC==13){
+      display.drawBitmap(Cxval, yy,bana,24,24, 1);
+      display.display();
+      (Cscore=Cscore+7);
+      delay(tt);     
+    }  
+    if (numberC==14){
+      display.drawBitmap(Cxval, yy,seven,24,24, 1);
+      display.display();
+      (Cscore=Cscore+5);
+      delay(tt);     
+    }
+    if (numberC==15){
+      display.drawBitmap(Cxval, yy,cherry,24,24, 1);
+      display.display();
+      (Cscore=Cscore+4);
+      delay(tt);     
+    }  
+    if (numberC==16){
+      display.drawBitmap(Cxval, yyy,bar,24,24, 1);
+      display.display();
+      (Cscore=Cscore+6);
+      delay(tt);     
+    }
+    if (numberC==17){
+      display.drawBitmap(Cxval, yy,grape,24,24, 1);
+      display.display();
+      (Cscore=Cscore+9);
+      delay(tt);     
+    }  
+    if (numberC==18){
+      display.drawBitmap(Cxval, yy,grape,24,24, 1);
+      display.display();
+      (Cscore=Cscore+9);
+      delay(tt); 
+    }  
+    if (numberC==19){
+      display.drawBitmap(Cxval, yy,grape,24,24, 1);
+      display.display();
+      (Cscore=Cscore+9);
+      delay(tt);     
+    }  
+    if (numberC==20){
+      display.drawBitmap(Cxval, 9,money,24,24, 1);
+      display.display();
+      (Cscore=Cscore+12);
+      delay(tt); 
+    }  
     Serial.println(Cscore);     
-      if (Ascore == 9 && Bscore == 9 && Cscore == 9){
-    (bal=bal+betlvl*10);
+      if (Ascore == 9 && Bscore == 9 && Cscore ==9){
+    (bal=bal+betlvl*8);
     delay(1200);
     display.clearDisplay();
     display.drawBitmap(0, 0,win,128,32, 1);
     display.display();
     digitalWrite(ledPinblue,HIGH);
+    digitalWrite(ledPinred,HIGH);
     delay(500);
     digitalWrite(ledPinblue,LOW);
-    digitalWrite(ledPingreen,HIGH);
     delay(500);
-    digitalWrite(ledPingreen,LOW);
     digitalWrite(ledPinblue,HIGH);
     delay(500);
-    digitalWrite(ledPinblue,LOW);
-    digitalWrite(ledPingreen,HIGH);
+    digitalWrite(ledPinred,LOW);
     delay(500);
-    digitalWrite(ledPingreen,LOW);
-    digitalWrite(ledPinblue,HIGH);
+    digitalWrite(ledPinred,HIGH);
     delay(500);
     digitalWrite(ledPinblue,LOW);
-    delay(50);
+    digitalWrite(ledPinred,LOW);
    }
-      if (Ascore == 6 && Bscore == 6 && Cscore == 6){
-    (bal=bal+betlvl*18);
+   if (Ascore == 9 && Bscore == 12 && Cscore ==9){
+    (bal=bal+betlvl*8);
+    delay(1200);
+    display.clearDisplay();
+    display.drawBitmap(0, 0,win,128,32, 1);
+    display.display();
+    digitalWrite(ledPinblue,HIGH);
+    digitalWrite(ledPinred,HIGH);
+    delay(500);
+    digitalWrite(ledPinblue,LOW);
+    delay(500);
+    digitalWrite(ledPinblue,HIGH);
+    delay(500);
+    digitalWrite(ledPinred,LOW);
+    delay(500);
+    digitalWrite(ledPinred,HIGH);
+    delay(500);
+    digitalWrite(ledPinblue,LOW);
+    digitalWrite(ledPinred,LOW);
+   }
+      if (Ascore == 12 && Bscore == 12 && Cscore ==9){
+    (bal=bal+betlvl*8);
+    delay(1200);
+    display.clearDisplay();
+    display.drawBitmap(0, 0,win,128,32, 1);
+    display.display();
+    digitalWrite(ledPinblue,HIGH);
+    digitalWrite(ledPinred,HIGH);
+    delay(500);
+    digitalWrite(ledPinblue,LOW);
+    delay(500);
+    digitalWrite(ledPinblue,HIGH);
+    delay(500);
+    digitalWrite(ledPinred,LOW);
+    delay(500);
+    digitalWrite(ledPinred,HIGH);
+    delay(500);
+    digitalWrite(ledPinblue,LOW);
+    digitalWrite(ledPinred,LOW);
+   }
+      if (Ascore == 9 && Bscore == 12 && Cscore ==12){
+    (bal=bal+betlvl*8);
+    delay(1200);
+    display.clearDisplay();
+    display.drawBitmap(0, 0,win,128,32, 1);
+    display.display();
+    digitalWrite(ledPinblue,HIGH);
+    digitalWrite(ledPinred,HIGH);
+    delay(500);
+    digitalWrite(ledPinblue,LOW);
+    delay(500);
+    digitalWrite(ledPinblue,HIGH);
+    delay(500);
+    digitalWrite(ledPinred,LOW);
+    delay(500);
+    digitalWrite(ledPinred,HIGH);
+    delay(500);
+    digitalWrite(ledPinblue,LOW);
+    digitalWrite(ledPinred,LOW);
+   }
+      if (Ascore == 12 && Bscore == 9 && Cscore ==12){
+    (bal=bal+betlvl*8);
+    delay(1200);
+    display.clearDisplay();
+    display.drawBitmap(0, 0,win,128,32, 1);
+    display.display();
+    digitalWrite(ledPinblue,HIGH);
+    digitalWrite(ledPinred,HIGH);
+    delay(500);
+    digitalWrite(ledPinblue,LOW);
+    delay(500);
+    digitalWrite(ledPinblue,HIGH);
+    delay(500);
+    digitalWrite(ledPinred,LOW);
+    delay(500);
+    digitalWrite(ledPinred,HIGH);
+    delay(500);
+    digitalWrite(ledPinblue,LOW);
+    digitalWrite(ledPinred,LOW);
+   }
+      if (Ascore == 12 && Bscore == 9 && Cscore ==9){
+    (bal=bal+betlvl*8);
+    delay(1200);
+    display.clearDisplay();
+    display.drawBitmap(0, 0,win,128,32, 1);
+    display.display();
+    digitalWrite(ledPinblue,HIGH);
+    digitalWrite(ledPinred,HIGH);
+    delay(500);
+    digitalWrite(ledPinblue,LOW);
+    delay(500);
+    digitalWrite(ledPinblue,HIGH);
+    delay(500);
+    digitalWrite(ledPinred,LOW);
+    delay(500);
+    digitalWrite(ledPinred,HIGH);
+    delay(500);
+    digitalWrite(ledPinblue,LOW);
+    digitalWrite(ledPinred,LOW);
+   }
+      if (Ascore == 9 && Bscore == 9 && Cscore ==12){
+    (bal=bal+betlvl*8);
+    delay(1200);
+    display.clearDisplay();
+    display.drawBitmap(0, 0,win,128,32, 1);
+    display.display();
+    digitalWrite(ledPinblue,HIGH);
+    digitalWrite(ledPinred,HIGH);
+    delay(500);
+    digitalWrite(ledPinblue,LOW);
+    delay(500);
+    digitalWrite(ledPinblue,HIGH);
+    delay(500);
+    digitalWrite(ledPinred,LOW);
+    delay(500);
+    digitalWrite(ledPinred,HIGH);
+    delay(500);
+    digitalWrite(ledPinblue,LOW);
+    digitalWrite(ledPinred,LOW);
+   }
+      if (Ascore == 6 && Bscore == 6 && Cscore == 6 ){
+    (bal=bal+betlvl*16);
     delay(1200);
     display.clearDisplay();
     display.drawBitmap(0, 0,win,128,32, 1);
@@ -369,13 +685,144 @@ void loop() {
     digitalWrite(ledPinred,HIGH);
     delay(500);
     digitalWrite(ledPinred,LOW);
-    delay(50);
+   }
+    if (Ascore == 6 && Bscore == 12 && Cscore == 6 ){
+    (bal=bal+betlvl*16);
+    delay(1200);
+    display.clearDisplay();
+    display.drawBitmap(0, 0,win,128,32, 1);
+    display.display();
+    digitalWrite(ledPinred,HIGH);
+    delay(500);
+    digitalWrite(ledPinred,LOW);
+    digitalWrite(ledPingreen,HIGH);
+    delay(500);
+    digitalWrite(ledPingreen,LOW);
+    digitalWrite(ledPinred,HIGH);
+    delay(500);
+    digitalWrite(ledPinred,LOW);
+    digitalWrite(ledPingreen,HIGH);
+    delay(500);
+    digitalWrite(ledPingreen,LOW);
+    digitalWrite(ledPinred,HIGH);
+    delay(500);
+    digitalWrite(ledPinred,LOW);
+   }
+       if (Ascore == 12 && Bscore == 12 && Cscore == 6 ){
+    (bal=bal+betlvl*16);
+    delay(1200);
+    display.clearDisplay();
+    display.drawBitmap(0, 0,win,128,32, 1);
+    display.display();
+    digitalWrite(ledPinred,HIGH);
+    delay(500);
+    digitalWrite(ledPinred,LOW);
+    digitalWrite(ledPingreen,HIGH);
+    delay(500);
+    digitalWrite(ledPingreen,LOW);
+    digitalWrite(ledPinred,HIGH);
+    delay(500);
+    digitalWrite(ledPinred,LOW);
+    digitalWrite(ledPingreen,HIGH);
+    delay(500);
+    digitalWrite(ledPingreen,LOW);
+    digitalWrite(ledPinred,HIGH);
+    delay(500);
+    digitalWrite(ledPinred,LOW);
+   }
+       if (Ascore == 6 && Bscore == 12 && Cscore == 12 ){
+    (bal=bal+betlvl*16);
+    delay(1200);
+    display.clearDisplay();
+    display.drawBitmap(0, 0,win,128,32, 1);
+    display.display();
+    digitalWrite(ledPinred,HIGH);
+    delay(500);
+    digitalWrite(ledPinred,LOW);
+    digitalWrite(ledPingreen,HIGH);
+    delay(500);
+    digitalWrite(ledPingreen,LOW);
+    digitalWrite(ledPinred,HIGH);
+    delay(500);
+    digitalWrite(ledPinred,LOW);
+    digitalWrite(ledPingreen,HIGH);
+    delay(500);
+    digitalWrite(ledPingreen,LOW);
+    digitalWrite(ledPinred,HIGH);
+    delay(500);
+    digitalWrite(ledPinred,LOW);
+   }
+       if (Ascore == 12 && Bscore == 6 && Cscore == 12 ){
+    (bal=bal+betlvl*16);
+    delay(1200);
+    display.clearDisplay();
+    display.drawBitmap(0, 0,win,128,32, 1);
+    display.display();
+    digitalWrite(ledPinred,HIGH);
+    delay(500);
+    digitalWrite(ledPinred,LOW);
+    digitalWrite(ledPingreen,HIGH);
+    delay(500);
+    digitalWrite(ledPingreen,LOW);
+    digitalWrite(ledPinred,HIGH);
+    delay(500);
+    digitalWrite(ledPinred,LOW);
+    digitalWrite(ledPingreen,HIGH);
+    delay(500);
+    digitalWrite(ledPingreen,LOW);
+    digitalWrite(ledPinred,HIGH);
+    delay(500);
+    digitalWrite(ledPinred,LOW);
+   }
+       if (Ascore == 12 && Bscore == 6 && Cscore == 6 ){
+    (bal=bal+betlvl*16);
+    delay(1200);
+    display.clearDisplay();
+    display.drawBitmap(0, 0,win,128,32, 1);
+    display.display();
+    digitalWrite(ledPinred,HIGH);
+    delay(500);
+    digitalWrite(ledPinred,LOW);
+    digitalWrite(ledPingreen,HIGH);
+    delay(500);
+    digitalWrite(ledPingreen,LOW);
+    digitalWrite(ledPinred,HIGH);
+    delay(500);
+    digitalWrite(ledPinred,LOW);
+    digitalWrite(ledPingreen,HIGH);
+    delay(500);
+    digitalWrite(ledPingreen,LOW);
+    digitalWrite(ledPinred,HIGH);
+    delay(500);
+    digitalWrite(ledPinred,LOW);
+   }
+       if (Ascore == 6 && Bscore == 6 && Cscore == 12 ){
+    (bal=bal+betlvl*16);
+    delay(1200);
+    display.clearDisplay();
+    display.drawBitmap(0, 0,win,128,32, 1);
+    display.display();
+    digitalWrite(ledPinred,HIGH);
+    delay(500);
+    digitalWrite(ledPinred,LOW);
+    digitalWrite(ledPingreen,HIGH);
+    delay(500);
+    digitalWrite(ledPingreen,LOW);
+    digitalWrite(ledPinred,HIGH);
+    delay(500);
+    digitalWrite(ledPinred,LOW);
+    digitalWrite(ledPingreen,HIGH);
+    delay(500);
+    digitalWrite(ledPingreen,LOW);
+    digitalWrite(ledPinred,HIGH);
+    delay(500);
+    digitalWrite(ledPinred,LOW);
    }
       if (Ascore == 5 && Bscore == 5 && Cscore == 5){
-    (bal=bal+betlvl*95);
+    (bal=bal+betlvl*75);
     delay(1200);
     display.clearDisplay();
-    display.drawBitmap(0, 0,win,128,32, 1);
+    display.drawBitmap(0, 8,jackpot,128,32, 1);
     display.display();
     digitalWrite(ledPinred,HIGH);
     digitalWrite(ledPinblue,HIGH);
@@ -392,32 +839,417 @@ void loop() {
     delay(500);
     digitalWrite(ledPinred,LOW);
    }
-
+      if (Ascore == 5 && Bscore == 12 && Cscore == 5){
+    (bal=bal+betlvl*75);
+    delay(1200);
+    display.clearDisplay();
+    display.drawBitmap(0, 8,jackpot,128,32, 1);
+    display.display();
+    digitalWrite(ledPinred,HIGH);
+    digitalWrite(ledPinblue,HIGH);
+    delay(500);
+    digitalWrite(ledPinred,LOW);
+    delay(500);
+    digitalWrite(ledPingreen,HIGH);
+    delay(500);
+    digitalWrite(ledPinblue,LOW);
+    delay(500);
+    digitalWrite(ledPinred,HIGH);
+    delay(500);
+    digitalWrite(ledPingreen,LOW);
+    delay(500);
+    digitalWrite(ledPinred,LOW);
+   }
+    if (Ascore == 12 && Bscore == 12 && Cscore == 5){
+    (bal=bal+betlvl*75);
+    delay(1200);
+    display.clearDisplay();
+    display.drawBitmap(0, 8,jackpot,128,32, 1);
+    display.display();
+    digitalWrite(ledPinred,HIGH);
+    digitalWrite(ledPinblue,HIGH);
+    delay(500);
+    digitalWrite(ledPinred,LOW);
+    delay(500);
+    digitalWrite(ledPingreen,HIGH);
+    delay(500);
+    digitalWrite(ledPinblue,LOW);
+    delay(500);
+    digitalWrite(ledPinred,HIGH);
+    delay(500);
+    digitalWrite(ledPingreen,LOW);
+    delay(500);
+    digitalWrite(ledPinred,LOW);
+   }
+   if (Ascore == 5 && Bscore == 12 && Cscore == 12){
+    (bal=bal+betlvl*75);
+    delay(1200);
+    display.clearDisplay();
+    display.drawBitmap(0, 8,jackpot,128,32, 1);
+    display.display();
+    digitalWrite(ledPinred,HIGH);
+    digitalWrite(ledPinblue,HIGH);
+    delay(500);
+    digitalWrite(ledPinred,LOW);
+    delay(500);
+    digitalWrite(ledPingreen,HIGH);
+    delay(500);
+    digitalWrite(ledPinblue,LOW);
+    delay(500);
+    digitalWrite(ledPinred,HIGH);
+    delay(500);
+    digitalWrite(ledPingreen,LOW);
+    delay(500);
+    digitalWrite(ledPinred,LOW);
+   }
+   if (Ascore == 12 && Bscore == 5 && Cscore == 12){
+    (bal=bal+betlvl*75);
+    delay(1200);
+    display.clearDisplay();
+    display.drawBitmap(0, 8,jackpot,128,32, 1);
+    display.display();
+    digitalWrite(ledPinred,HIGH);
+    digitalWrite(ledPinblue,HIGH);
+    delay(500);
+    digitalWrite(ledPinred,LOW);
+    delay(500);
+    digitalWrite(ledPingreen,HIGH);
+    delay(500);
+    digitalWrite(ledPinblue,LOW);
+    delay(500);
+    digitalWrite(ledPinred,HIGH);
+    delay(500);
+    digitalWrite(ledPingreen,LOW);
+    delay(500);
+    digitalWrite(ledPinred,LOW);
+   }
+   if (Ascore == 5 && Bscore == 5 && Cscore == 12){
+    (bal=bal+betlvl*75);
+    delay(1200);
+    display.clearDisplay();
+    display.drawBitmap(0, 8,jackpot,128,32, 1);
+    display.display();
+    digitalWrite(ledPinred,HIGH);
+    digitalWrite(ledPinblue,HIGH);
+    delay(500);
+    digitalWrite(ledPinred,LOW);
+    delay(500);
+    digitalWrite(ledPingreen,HIGH);
+    delay(500);
+    digitalWrite(ledPinblue,LOW);
+    delay(500);
+    digitalWrite(ledPinred,HIGH);
+    delay(500);
+    digitalWrite(ledPingreen,LOW);
+    delay(500);
+    digitalWrite(ledPinred,LOW);
+   }
+   if (Ascore == 12 && Bscore == 5 && Cscore == 5){
+    (bal=bal+betlvl*75);
+    delay(1200);
+    display.clearDisplay();
+    display.drawBitmap(0, 8,jackpot,128,32, 1);
+    display.display();
+    digitalWrite(ledPinred,HIGH);
+    digitalWrite(ledPinblue,HIGH);
+    delay(500);
+    digitalWrite(ledPinred,LOW);
+    delay(500);
+    digitalWrite(ledPingreen,HIGH);
+    delay(500);
+    digitalWrite(ledPinblue,LOW);
+    delay(500);
+    digitalWrite(ledPinred,HIGH);
+    delay(500);
+    digitalWrite(ledPingreen,LOW);
+    delay(500);
+    digitalWrite(ledPinred,LOW);
+   }
       if (Ascore == 4 && Bscore == 4 && Cscore == 4){
-    (bal=bal+betlvl*10);
+    (bal=bal+betlvl*8);
     delay(1200);
     display.clearDisplay();
     display.drawBitmap(0, 0,win,128,32, 1);
     display.display();
+    digitalWrite(ledPinred,HIGH);
     digitalWrite(ledPinblue,HIGH);
     delay(500);
     digitalWrite(ledPinblue,LOW);
-    digitalWrite(ledPingreen,HIGH);
     delay(500);
-    digitalWrite(ledPingreen,LOW);
     digitalWrite(ledPinblue,HIGH);
     delay(500);
-    digitalWrite(ledPinblue,LOW);
-    digitalWrite(ledPingreen,HIGH);
+    digitalWrite(ledPinred,LOW);
     delay(500);
-    digitalWrite(ledPingreen,LOW);
-    digitalWrite(ledPinblue,HIGH);
+    digitalWrite(ledPinred,HIGH);
     delay(500);
+    digitalWrite(ledPinred,LOW);
     digitalWrite(ledPinblue,LOW);
-    delay(50);
    }
-         if (Ascore == 7 && Bscore == 7 && Cscore == 7){
-    (bal=bal+betlvl*10);
+        if (Ascore == 12 && Bscore == 4 && Cscore == 12){
+    (bal=bal+betlvl*8);
+    delay(1200);
+    display.clearDisplay();
+    display.drawBitmap(0, 0,win,128,32, 1);
+    display.display();
+    digitalWrite(ledPinred,HIGH);
+    digitalWrite(ledPinblue,HIGH);
+    delay(500);
+    digitalWrite(ledPinblue,LOW);
+    delay(500);
+    digitalWrite(ledPinblue,HIGH);
+    delay(500);
+    digitalWrite(ledPinred,LOW);
+    delay(500);
+    digitalWrite(ledPinred,HIGH);
+    delay(500);
+    digitalWrite(ledPinred,LOW);
+    digitalWrite(ledPinblue,LOW);
+   }
+       if (Ascore == 4 && Bscore == 12 && Cscore == 4){
+    (bal=bal+betlvl*8);
+    delay(1200);
+    display.clearDisplay();
+    display.drawBitmap(0, 0,win,128,32, 1);
+    display.display();
+    digitalWrite(ledPinred,HIGH);
+    digitalWrite(ledPinblue,HIGH);
+    delay(500);
+    digitalWrite(ledPinblue,LOW);
+    delay(500);
+    digitalWrite(ledPinblue,HIGH);
+    delay(500);
+    digitalWrite(ledPinred,LOW);
+    delay(500);
+    digitalWrite(ledPinred,HIGH);
+    delay(500);
+    digitalWrite(ledPinred,LOW);
+    digitalWrite(ledPinblue,LOW);
+   }
+   
+       if (Ascore == 4 && Bscore == 12 && Cscore == 12){
+    (bal=bal+betlvl*8);
+    delay(1200);
+    display.clearDisplay();
+    display.drawBitmap(0, 0,win,128,32, 1);
+    display.display();
+    digitalWrite(ledPinred,HIGH);
+    digitalWrite(ledPinblue,HIGH);
+    delay(500);
+    digitalWrite(ledPinblue,LOW);
+    delay(500);
+    digitalWrite(ledPinblue,HIGH);
+    delay(500);
+    digitalWrite(ledPinred,LOW);
+    delay(500);
+    digitalWrite(ledPinred,HIGH);
+    delay(500);
+    digitalWrite(ledPinred,LOW);
+    digitalWrite(ledPinblue,LOW);
+   }
+   
+       if (Ascore == 12 && Bscore == 12 && Cscore == 4){
+    (bal=bal+betlvl*8);
+    delay(1200);
+    display.clearDisplay();
+    display.drawBitmap(0, 0,win,128,32, 1);
+    display.display();
+    digitalWrite(ledPinred,HIGH);
+    digitalWrite(ledPinblue,HIGH);
+    delay(500);
+    digitalWrite(ledPinblue,LOW);
+    delay(500);
+    digitalWrite(ledPinblue,HIGH);
+    delay(500);
+    digitalWrite(ledPinred,LOW);
+    delay(500);
+    digitalWrite(ledPinred,HIGH);
+    delay(500);
+    digitalWrite(ledPinred,LOW);
+    digitalWrite(ledPinblue,LOW);
+   }
+   
+       if (Ascore == 4 && Bscore == 4 && Cscore == 12){
+    (bal=bal+betlvl*8);
+    delay(1200);
+    display.clearDisplay();
+    display.drawBitmap(0, 0,win,128,32, 1);
+    display.display();
+    digitalWrite(ledPinred,HIGH);
+    digitalWrite(ledPinblue,HIGH);
+    delay(500);
+    digitalWrite(ledPinblue,LOW);
+    delay(500);
+    digitalWrite(ledPinblue,HIGH);
+    delay(500);
+    digitalWrite(ledPinred,LOW);
+    delay(500);
+    digitalWrite(ledPinred,HIGH);
+    delay(500);
+    digitalWrite(ledPinred,LOW);
+    digitalWrite(ledPinblue,LOW);
+   }
+   if (Ascore == 12 && Bscore == 4 && Cscore == 4){
+    (bal=bal+betlvl*8);
+    delay(1200);
+    display.clearDisplay();
+    display.drawBitmap(0, 0,win,128,32, 1);
+    display.display();
+    digitalWrite(ledPinred,HIGH);
+    digitalWrite(ledPinblue,HIGH);
+    delay(500);
+    digitalWrite(ledPinblue,LOW);
+    delay(500);
+    digitalWrite(ledPinblue,HIGH);
+    delay(500);
+    digitalWrite(ledPinred,LOW);
+    delay(500);
+    digitalWrite(ledPinred,HIGH);
+    delay(500);
+    digitalWrite(ledPinred,LOW);
+    digitalWrite(ledPinblue,LOW);
+   }
+     if (Ascore == 7 && Bscore == 7 && Cscore == 7){
+    (bal=bal+betlvl*8);
+    delay(1200);
+    display.clearDisplay();
+    display.drawBitmap(0, 0,win,128,32, 1);
+    display.display();
+    digitalWrite(ledPinred,HIGH);
+    digitalWrite(ledPingreen,HIGH);
+    delay(500);
+    digitalWrite(ledPinred,LOW);
+    delay(500);
+    digitalWrite(ledPinred,HIGH);
+    delay(500);
+    digitalWrite(ledPingreen,LOW);
+    delay(500);
+    digitalWrite(ledPingreen,HIGH);
+    delay(500);
+    digitalWrite(ledPingreen,LOW);
+    digitalWrite(ledPinred,LOW);
+   }
+     if (Ascore == 7 && Bscore == 12 && Cscore == 7){
+    (bal=bal+betlvl*8);
+    delay(1200);
+    display.clearDisplay();
+    display.drawBitmap(0, 0,win,128,32, 1);
+    display.display();
+    digitalWrite(ledPinred,HIGH);
+    digitalWrite(ledPingreen,HIGH);
+    delay(500);
+    digitalWrite(ledPinred,LOW);
+    delay(500);
+    digitalWrite(ledPinred,HIGH);
+    delay(500);
+    digitalWrite(ledPingreen,LOW);
+    delay(500);
+    digitalWrite(ledPingreen,HIGH);
+    delay(500);
+    digitalWrite(ledPingreen,LOW);
+    digitalWrite(ledPinred,LOW);
+   }
+   if (Ascore == 12 && Bscore == 7 && Cscore == 12){
+    (bal=bal+betlvl*8);
+    delay(1200);
+    display.clearDisplay();
+    display.drawBitmap(0, 0,win,128,32, 1);
+    display.display();
+    digitalWrite(ledPinred,HIGH);
+    digitalWrite(ledPingreen,HIGH);
+    delay(500);
+    digitalWrite(ledPinred,LOW);
+    delay(500);
+    digitalWrite(ledPinred,HIGH);
+    delay(500);
+    digitalWrite(ledPingreen,LOW);
+    delay(500);
+    digitalWrite(ledPingreen,HIGH);
+    delay(500);
+    digitalWrite(ledPingreen,LOW);
+    digitalWrite(ledPinred,LOW);
+   }
+   if (Ascore == 7 && Bscore == 12 && Cscore == 12){
+    (bal=bal+betlvl*8);
+    delay(1200);
+    display.clearDisplay();
+    display.drawBitmap(0, 0,win,128,32, 1);
+    display.display();
+    digitalWrite(ledPinred,HIGH);
+    digitalWrite(ledPingreen,HIGH);
+    delay(500);
+    digitalWrite(ledPinred,LOW);
+    delay(500);
+    digitalWrite(ledPinred,HIGH);
+    delay(500);
+    digitalWrite(ledPingreen,LOW);
+    delay(500);
+    digitalWrite(ledPingreen,HIGH);
+    delay(500);
+    digitalWrite(ledPingreen,LOW);
+    digitalWrite(ledPinred,LOW);
+   }
+     if (Ascore == 12 && Bscore == 12 && Cscore == 7){
+    (bal=bal+betlvl*8);
+    delay(1200);
+    display.clearDisplay();
+    display.drawBitmap(0, 0,win,128,32, 1);
+    display.display();
+    digitalWrite(ledPinred,HIGH);
+    digitalWrite(ledPingreen,HIGH);
+    delay(500);
+    digitalWrite(ledPinred,LOW);
+    delay(500);
+    digitalWrite(ledPinred,HIGH);
+    delay(500);
+    digitalWrite(ledPingreen,LOW);
+    delay(500);
+    digitalWrite(ledPingreen,HIGH);
+    delay(500);
+    digitalWrite(ledPingreen,LOW);
+    digitalWrite(ledPinred,LOW);
+   }
+     if (Ascore == 7 && Bscore == 7 && Cscore == 12){
+    (bal=bal+betlvl*8);
+    delay(1200);
+    display.clearDisplay();
+    display.drawBitmap(0, 0,win,128,32, 1);
+    display.display();
+    digitalWrite(ledPinred,HIGH);
+    digitalWrite(ledPingreen,HIGH);
+    delay(500);
+    digitalWrite(ledPinred,LOW);
+    delay(500);
+    digitalWrite(ledPinred,HIGH);
+    delay(500);
+    digitalWrite(ledPingreen,LOW);
+    delay(500);
+    digitalWrite(ledPingreen,HIGH);
+    delay(500);
+    digitalWrite(ledPingreen,LOW);
+    digitalWrite(ledPinred,LOW);
+   }
+     if (Ascore == 12 && Bscore == 7 && Cscore == 7){
+    (bal=bal+betlvl*8);
+    delay(1200);
+    display.clearDisplay();
+    display.drawBitmap(0, 0,win,128,32, 1);
+    display.display();
+    digitalWrite(ledPinred,HIGH);
+    digitalWrite(ledPingreen,HIGH);
+    delay(500);
+    digitalWrite(ledPinred,LOW);
+    delay(500);
+    digitalWrite(ledPinred,HIGH);
+    delay(500);
+    digitalWrite(ledPingreen,LOW);
+    delay(500);
+    digitalWrite(ledPingreen,HIGH);
+    delay(500);
+    digitalWrite(ledPingreen,LOW);
+    digitalWrite(ledPinred,LOW);
+   }
+     if (Ascore == 12 && Bscore == 12 && Cscore == 12){
+    (bal=bal+betlvl*950);
     delay(1200);
     display.clearDisplay();
     display.drawBitmap(0, 0,win,128,32, 1);
@@ -437,12 +1269,11 @@ void loop() {
     digitalWrite(ledPinblue,HIGH);
     delay(500);
     digitalWrite(ledPinblue,LOW);
-    delay(50);
    }
    display.setCursor(0, 12);
       display.println(bal);
-    delay(1200);
-  if ( bal < betlvl ){
+    delay(80);
+  if ( bal <= 0 ){
   display.clearDisplay();
   display.drawBitmap(0, 8,gameover,128,24, 1);
    }
@@ -454,4 +1285,5 @@ void loop() {
   
 }
      
+         
       
