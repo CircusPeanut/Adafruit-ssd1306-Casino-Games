@@ -1,4 +1,4 @@
-# Peanut-Projects
+# Peanuts Slot Machine
 
 Hello!  This is the code for a simple, three reel video slot which is exculsivly meant for the Adafruit ssd1306 32x128 i2c OLED display.
 
