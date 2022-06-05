@@ -15,6 +15,6 @@ The code works by listening and waiting for the Joystick knob to be held down.  
 When the proper value is met, a suqence of events that decides the symbol on each reel begins.  The reels and their respective 
 corrisponding values are all labled A B and C from left to right.  A number between 1 and 20 is randomly
 chosen, and then a score counter for the win id is kept for that reel, and then the same happens for the
-next reel, and the next.  When all three symbols are chosen, a long list of "if" checks occur, looking for winning combinations, and then the bet level is multiplied by a set amount and added to the balance.
+next reel, and the next.  When all three symbols are chosen, a long list of "if" checks occur, looking for winning combinations, and then the bet level is multiplied by a set amount and added to the balance if a win is found.
 I would love help in shortening and abreviating the winning sequences with "or" logic for the wild symbol.  I had to make a sperate
 "if" check for each possible configuration of wilds, using a lot of the Nanos memory.
