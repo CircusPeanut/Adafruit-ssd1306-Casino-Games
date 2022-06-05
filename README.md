@@ -16,5 +16,5 @@ When the proper value is met, a suqence of events that decides the symbol on eac
 corrisponding values are all labled A B and C from left to right.  A number between 1 and 20 is randomly
 chosen, and then a score counter for the win id is kept for that reel, and then the same happens for the
 next reel, and the next.  When all three symbols are chosen, a long list of "if" checks occur, looking for winning combinations.
-I would love help in shortening and abreviating the winning sequences with "or" logic for the wild symbol.  I has to make a sperate
+I would love help in shortening and abreviating the winning sequences with "or" logic for the wild symbol.  I had to make a sperate
 "if" check for each possible configuration of wilds, using a lot of the Nanos memory.
